@@ -85,9 +85,8 @@ export default function Hero() {
 
   return (
     <div className="relative min-h-screen w-full overflow-hidden bg-[#f6f6f7] text-[#1a1a1a] flex flex-col justify-between selection:bg-black selection:text-white">
-      <div className="lg:hidden">
+      <div className="h-[88px] lg:hidden">
         <StaggeredMenu
-          isFixed
           logoUrl="/images/lj-logo-transparent.png"
           items={[
             { label: "About", ariaLabel: "Go to about section", link: "#about" },
@@ -105,7 +104,7 @@ export default function Hero() {
         />
       </div>
       {/* Top Navbar */}
-      <header ref={navRef} className="sticky top-0 z-50 relative w-full py-7 bg-[#f6f6f7]/90 backdrop-blur-md" style={{ opacity: 0 }}>
+      <header ref={navRef} className="relative z-50 hidden w-full bg-[#f6f6f7]/90 py-7 backdrop-blur-md lg:sticky lg:top-0 lg:block" style={{ opacity: 0 }}>
         {/* The logo stays anchored to the viewport while links share the Hello content grid. */}
         <Link href="/" className="absolute left-8 top-[calc(50%+4px)] hidden -translate-y-1/2 items-center gap-2 group sm:left-16 sm:top-1/2 lg:flex">
           <ShinyText

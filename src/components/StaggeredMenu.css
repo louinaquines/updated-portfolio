@@ -38,6 +38,13 @@
 .sm-prelayers { position: absolute; inset: 0 0 0 auto; width: min(88vw, 420px); pointer-events: none; z-index: 5; opacity: 0; }
 .sm-prelayer { position: absolute; inset: 0; transform: translateX(0); opacity: 0; }
 .staggered-menu-panel { position: absolute; inset: 0 0 0 auto; width: min(88vw, 420px); display: flex; flex-direction: column; padding: 7.5rem 2rem 2rem; overflow-y: auto; background: #f6f6f7; opacity: 0; pointer-events: auto; z-index: 10; }
+.staggered-menu-wrapper[data-open] .sm-prelayers,
+.staggered-menu-wrapper[data-open] .staggered-menu-panel {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  height: 100vh;
+}
 [data-position="left"] .sm-prelayers, [data-position="left"] .staggered-menu-panel { right: auto; left: 0; }
 .sm-panel-inner { display: flex; flex: 1; flex-direction: column; gap: 1.25rem; }
 .sm-panel-list { display: flex; flex-direction: column; gap: 0.8rem; list-style: none; margin: 0; padding: 0; }
