@@ -87,7 +87,7 @@ export default function Hero() {
       {/* Top Navbar */}
       <header ref={navRef} className="sticky top-0 z-50 relative w-full py-7 bg-[#f6f6f7]/90 backdrop-blur-md" style={{ opacity: 0 }}>
         {/* The logo stays anchored to the viewport while links share the Hello content grid. */}
-        <Link href="/" className="absolute left-8 top-1/2 flex -translate-y-1/2 items-center gap-2 group sm:left-16">
+        <Link href="/" className="absolute left-8 top-[calc(50%+4px)] flex -translate-y-1/2 items-center gap-2 group sm:left-16 sm:top-1/2">
           <Image
             src="/images/lj-logo-transparent.png"
             alt="Loui Naquines"

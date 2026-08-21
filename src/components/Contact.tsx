@@ -162,6 +162,10 @@ export default function Contact() {
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.14em] text-zinc-500">Based in</p>
               <p className="mt-3 font-serif text-3xl leading-tight tracking-[-0.04em]">Cebu, Philippines · Asia/Manila (GMT+8)</p>
+              <a href="tel:+639397837217" className="mt-6 inline-flex items-center gap-3 text-sm font-semibold tracking-wide text-zinc-700 transition-colors hover:text-black">
+                <svg aria-hidden="true" className="size-5" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24"><path d="M6.6 3.8 8.5 3a1.5 1.5 0 0 1 1.9.7l1.1 2.6a1.5 1.5 0 0 1-.4 1.7L9.8 9.2a13.5 13.5 0 0 0 5 5l1.2-1.3a1.5 1.5 0 0 1 1.7-.4l2.6 1.1a1.5 1.5 0 0 1 .7 1.9l-.8 1.9a2.5 2.5 0 0 1-2.7 1.5A16.5 16.5 0 0 1 5.1 6.5a2.5 2.5 0 0 1 1.5-2.7Z" /></svg>
+                <span>+63 939 783 7217</span>
+              </a>
               <p className="mt-8 text-xs font-semibold uppercase tracking-[0.14em] text-zinc-500">Connect with me</p>
               <div className="mt-4 flex flex-wrap gap-3" aria-label="Contact and social links">
                 <a href="mailto:louinaquines@gmail.com" title="Email" aria-label="Email" className="flex size-12 items-center justify-center rounded-full border border-black/20 text-zinc-700 transition-colors hover:bg-black hover:text-white">
