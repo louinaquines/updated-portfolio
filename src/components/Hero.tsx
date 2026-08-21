@@ -205,55 +205,59 @@ export default function Hero() {
         </div>
 
         {/* Right Column Large Portrait Cutout */}
-        <div ref={photoRef} className="w-full lg:w-1/2 flex justify-center lg:justify-end items-end h-[60vh] sm:h-[70vh] lg:h-[82vh] max-h-[780px] relative z-10" style={{ opacity: 0 }}>
-          <div className="relative w-full h-full flex justify-center lg:justify-end items-end">
-            <Image
-              src="/images/hero-person-cutout.png"
-              alt="Loui Naquines - Full-Stack Developer"
-              width={900}
-              height={1200}
-              priority
-              className="object-contain object-bottom h-full w-auto max-w-none select-none pointer-events-none drop-shadow-xl grayscale-[0.86] brightness-[1.08] contrast-[0.95]"
-            />
+        <div className="relative w-full lg:w-1/2">
+          <div ref={photoRef} className="flex h-[60vh] max-h-[780px] w-full items-end justify-center relative z-10 sm:h-[70vh] lg:h-[82vh] lg:justify-end" style={{ opacity: 0 }}>
+            <div className="relative flex h-full w-full items-end justify-center lg:justify-end">
+              <Image
+                src="/images/hero-person-cutout.png"
+                alt="Loui Naquines - Full-Stack Developer"
+                width={900}
+                height={1200}
+                priority
+                className="pointer-events-none h-full w-auto max-w-none select-none object-contain object-bottom drop-shadow-xl grayscale-[0.86] brightness-[1.08] contrast-[0.95]"
+              />
+            </div>
           </div>
-        </div>
 
-        {/* Social/contact links echo the reference without changing the hero palette. */}
-        <aside ref={socialRef} className="mt-8 grid w-full max-w-sm gap-2 lg:absolute lg:bottom-10 lg:right-0 lg:mt-0 lg:w-64" style={{ opacity: 0 }}>
-          {[
-            ["Email", "mailto:louinaquines@gmail.com", "email"],
-            ["Facebook", "https://www.facebook.com/loui.naquines", "facebook"],
-            ["Instagram", "https://www.instagram.com/_whitechocolateee", "instagram"],
-          ].map(([label, href, icon]) => (
-            <Link
-              key={label}
-              href={href}
-              target={href.startsWith("http") ? "_blank" : undefined}
-              rel={href.startsWith("http") ? "noreferrer" : undefined}
-              className="flex items-center justify-between rounded-full border border-black/15 bg-white/70 px-5 py-3 text-xs font-semibold uppercase tracking-[0.1em] text-zinc-700 backdrop-blur-sm transition-colors hover:border-black hover:bg-white hover:text-black"
-            >
-              {label}
-              {icon === "email" && (
-                <svg aria-hidden="true" className="size-4" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
-                  <rect x="3" y="5" width="18" height="14" rx="2" />
-                  <path d="m4 7 8 6 8-6" />
-                </svg>
-              )}
-              {icon === "facebook" && (
-                <svg aria-hidden="true" className="size-4" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M14 8h3V4h-3c-3.31 0-5 1.69-5 5v3H6v4h3v4h4v-4h3l1-4h-4V9c0-.67.33-1 1-1Z" />
-                </svg>
-              )}
-              {icon === "instagram" && (
-                <svg aria-hidden="true" className="size-4" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
-                  <rect x="3" y="3" width="18" height="18" rx="5" />
-                  <circle cx="12" cy="12" r="4" />
-                  <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
-                </svg>
-              )}
-            </Link>
-          ))}
-        </aside>
+          {/* Social/contact links stay attached to the portrait on small screens. */}
+          <aside ref={socialRef} className="absolute right-2 top-1/2 z-30 grid w-auto -translate-y-1/2 gap-2 lg:bottom-10 lg:right-0 lg:top-auto lg:mt-0 lg:w-64 lg:translate-y-0" style={{ opacity: 0 }}>
+            {[
+              ["Email", "mailto:louinaquines@gmail.com", "email"],
+              ["Facebook", "https://www.facebook.com/loui.naquines", "facebook"],
+              ["Instagram", "https://www.instagram.com/_whitechocolateee", "instagram"],
+            ].map(([label, href, icon]) => (
+              <Link
+                key={label}
+                href={href}
+                target={href.startsWith("http") ? "_blank" : undefined}
+                rel={href.startsWith("http") ? "noreferrer" : undefined}
+                aria-label={label}
+                title={label}
+                className="flex size-11 items-center justify-center rounded-full border border-black/15 bg-white/80 p-0 text-zinc-700 backdrop-blur-sm transition-colors hover:border-black hover:bg-white hover:text-black lg:h-auto lg:w-full lg:justify-between lg:rounded-full lg:px-5 lg:py-3 lg:text-xs lg:font-semibold lg:uppercase lg:tracking-[0.1em]"
+              >
+                <span className="sr-only lg:not-sr-only">{label}</span>
+                {icon === "email" && (
+                  <svg aria-hidden="true" className="size-4" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
+                    <rect x="3" y="5" width="18" height="14" rx="2" />
+                    <path d="m4 7 8 6 8-6" />
+                  </svg>
+                )}
+                {icon === "facebook" && (
+                  <svg aria-hidden="true" className="size-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M14 8h3V4h-3c-3.31 0-5 1.69-5 5v3H6v4h3v4h4v-4h3l1-4h-4V9c0-.67.33-1 1-1Z" />
+                  </svg>
+                )}
+                {icon === "instagram" && (
+                  <svg aria-hidden="true" className="size-4" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
+                    <rect x="3" y="3" width="18" height="18" rx="5" />
+                    <circle cx="12" cy="12" r="4" />
+                    <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+                  </svg>
+                )}
+              </Link>
+            ))}
+          </aside>
+        </div>
       </main>
 
       {/* Footer / Year Tag */}
