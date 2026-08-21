@@ -166,6 +166,8 @@ export default function AccordionGallery({
             onFocus={() => selectPanel(index)}
             onKeyDown={(event) => handleKeyDown(index, event)}
             onClick={(event) => { if (!isActive) { event.preventDefault(); selectPanel(index); } }}
+            target="_blank"
+            rel="noreferrer"
             role="listitem"
             aria-current={isActive ? "true" : undefined}
           >{content}</a>
