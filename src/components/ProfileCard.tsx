@@ -22,6 +22,27 @@ export default function ProfileCard({
   contactText = "Contact",
 }: ProfileCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
+  const touchTimerRef = useRef<number | null>(null);
+
+  const clearTouchTimer = () => {
+    if (touchTimerRef.current) {
+      window.clearTimeout(touchTimerRef.current);
+      touchTimerRef.current = null;
+    }
+  };
+
+  const handlePointerDown = (event: PointerEvent<HTMLDivElement>) => {
+    if (event.pointerType !== "touch") return;
+    const card = cardRef.current;
+    if (!card) return;
+
+    clearTouchTimer();
+    card.classList.remove("profile-card--touch-active");
+    touchTimerRef.current = window.setTimeout(() => {
+      card.classList.add("profile-card--touch-active");
+      touchTimerRef.current = null;
+    }, 450);
+  };
 
   const handlePointerMove = (event: PointerEvent<HTMLDivElement>) => {
     const card = cardRef.current;
@@ -36,8 +57,10 @@ export default function ProfileCard({
   };
 
   const resetPointer = () => {
+    clearTouchTimer();
     const card = cardRef.current;
     if (!card) return;
+    card.classList.remove("profile-card--touch-active");
     card.style.setProperty("--pointer-x", "50%");
     card.style.setProperty("--pointer-y", "50%");
     card.style.setProperty("--rotate-x", "0deg");
@@ -46,7 +69,7 @@ export default function ProfileCard({
 
   return (
     <div className="profile-card-wrap">
-      <div ref={cardRef} className="profile-card" onPointerMove={handlePointerMove} onPointerLeave={resetPointer}>
+      <div ref={cardRef} className="profile-card" onPointerDown={handlePointerDown} onPointerUp={clearTouchTimer} onPointerCancel={resetPointer} onPointerMove={handlePointerMove} onPointerLeave={resetPointer}>
         <div className="profile-card__shine" />
         <Image className="profile-card__avatar" src={avatarUrl} alt={`${name || "Profile"} image`} fill sizes="(max-width: 1024px) 100vw, 40vw" />
         {(name || title) && (

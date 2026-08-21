@@ -32,6 +32,10 @@
   filter: grayscale(0) contrast(1.05);
 }
 
+.profile-card--touch-active .profile-card__avatar {
+  filter: grayscale(0) contrast(1.05);
+}
+
 .profile-card::before {
   content: "";
   position: absolute;

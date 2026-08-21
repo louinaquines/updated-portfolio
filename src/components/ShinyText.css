@@ -1,0 +1,13 @@
+.shiny-text {
+  display: inline-block;
+}
+
+.shiny-text--mask {
+  background-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-position: center;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  mask-size: contain;
+  -webkit-mask-size: contain;
+}

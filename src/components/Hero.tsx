@@ -3,7 +3,8 @@
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import SplitText from "@/components/SplitText";
+import StaggeredMenu from "@/components/StaggeredMenu";
+import ShinyText from "@/components/ShinyText";
 import { gsap } from "gsap";
 
 export default function Hero() {
@@ -84,20 +85,41 @@ export default function Hero() {
 
   return (
     <div className="relative min-h-screen w-full overflow-hidden bg-[#f6f6f7] text-[#1a1a1a] flex flex-col justify-between selection:bg-black selection:text-white">
+      <div className="lg:hidden">
+        <StaggeredMenu
+          isFixed
+          logoUrl="/images/lj-logo-transparent.png"
+          items={[
+            { label: "About", ariaLabel: "Go to about section", link: "#about" },
+            { label: "Projects", ariaLabel: "Go to projects section", link: "#projects" },
+            { label: "Contact", ariaLabel: "Go to contact section", link: "#contact" },
+            { label: "View Resume", ariaLabel: "Open resume", link: "/images/NAQUINES%2C%20LOUI%20-%20RESUME.pdf" },
+          ]}
+          socialItems={[
+            { label: "Email", link: "mailto:louinaquines@gmail.com" },
+            { label: "Facebook", link: "https://www.facebook.com/loui.naquines" },
+            { label: "Instagram", link: "https://www.instagram.com/_whitechocolateee" },
+          ]}
+          displaySocials
+          displayItemNumbering
+        />
+      </div>
       {/* Top Navbar */}
       <header ref={navRef} className="sticky top-0 z-50 relative w-full py-7 bg-[#f6f6f7]/90 backdrop-blur-md" style={{ opacity: 0 }}>
         {/* The logo stays anchored to the viewport while links share the Hello content grid. */}
-        <Link href="/" className="absolute left-8 top-[calc(50%+4px)] flex -translate-y-1/2 items-center gap-2 group sm:left-16 sm:top-1/2">
-          <Image
-            src="/images/lj-logo-transparent.png"
-            alt="Loui Naquines"
-            width={915}
-            height={611}
+        <Link href="/" className="absolute left-8 top-[calc(50%+4px)] hidden -translate-y-1/2 items-center gap-2 group sm:left-16 sm:top-1/2 lg:flex">
+          <ShinyText
+            maskImage="/images/lj-logo-transparent.png"
+            speed={2}
+            delay={1}
+            color="#111111"
+            shineColor="#ffffff"
+            spread={120}
             className="h-12 w-16 object-contain transition-transform duration-200 group-hover:scale-105"
           />
         </Link>
 
-        <nav className="mx-auto hidden w-full max-w-7xl items-center justify-end gap-9 px-6 text-sm font-medium tracking-wide text-zinc-600 sm:px-12 md:flex">
+        <nav className="mx-auto hidden w-full max-w-7xl items-center justify-end gap-9 px-6 text-sm font-medium tracking-wide text-zinc-600 sm:px-12 lg:flex">
           <Link href="#about" onClick={scrollToAbout} className="hover:text-black transition-colors">
             About
           </Link>
@@ -135,12 +157,17 @@ export default function Hero() {
             <p ref={badgeRef} className="mb-6 text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500" style={{ opacity: 0 }}>
               Full-Stack Developer
             </p>
-            <SplitText
-              tag="h1"
-              text="Hello World!"
-              className="mb-4 text-7xl font-semibold leading-none tracking-tighter text-black sm:text-8xl md:text-8xl"
-              textAlign="left"
-            />
+            <h1 className="mb-4 text-7xl font-semibold leading-none tracking-tighter text-black sm:text-8xl md:text-8xl">
+              <ShinyText
+                text="Hello World!"
+                speed={1}
+                delay={2}
+                color="#111111"
+                shineColor="#ffffff"
+                spread={120}
+                className="block"
+              />
+            </h1>
             <p ref={subtitleRef} className="text-sm sm:text-base font-normal text-zinc-700 flex items-center gap-2" style={{ opacity: 0 }}>
               <span className="w-6 h-[1.5px] bg-zinc-700 inline-block"></span>
               It&apos;s Loui Naquines, building for the web and beyond
@@ -153,7 +180,7 @@ export default function Hero() {
               End-to-end digital products
             </h2>
             <p className="mt-2 max-w-md text-sm leading-6 text-zinc-600 sm:text-base">
-              I build thoughtful websites, applications, and product systems from frontend to infrastructure.
+              I design and engineer full-stack web applications, seamless user interfaces, and reliable digital experiences from concept to deployment.
             </p>
             <div className="mt-5 flex flex-wrap gap-3">
               <Link
