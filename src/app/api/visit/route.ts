@@ -24,20 +24,34 @@ function pruneVisits(now: number) {
 }
 
 function getClientIp(request: NextRequest) {
-  return request.headers.get("x-forwarded-for")?.split(",")[0]?.trim()
-    || request.headers.get("x-real-ip")?.trim()
-    || "";
+  const candidates = [
+    request.headers.get("x-vercel-forwarded-for"),
+    request.headers.get("x-forwarded-for"),
+    request.headers.get("x-real-ip"),
+    request.headers.get("cf-connecting-ip"),
+  ];
+
+  return candidates
+    .flatMap((value) => value?.split(",") || [])
+    .map((value) => value.trim())
+    .find((value) => value && value !== "unknown") || "";
 }
 
 function isLocalAddress(ip: string) {
-  return !ip || ip === "::1" || ip === "127.0.0.1" || ip.startsWith("10.") || ip.startsWith("192.168.") || ip.startsWith("172.16.");
+  return !ip
+    || ip === "::1"
+    || ip === "127.0.0.1"
+    || ip === "::ffff:127.0.0.1"
+    || ip.startsWith("10.")
+    || ip.startsWith("192.168.")
+    || /^172\.(1[6-9]|2\d|3[0-1])\./.test(ip);
 }
 
 async function getApproximateLocation(request: NextRequest, clientTimezone?: string): Promise<Required<LocationDetails>> {
   const fallback = {
-    country: "Local development",
-    region: "Local development",
-    city: "Local development",
+    country: "Unavailable",
+    region: "Unavailable",
+    city: "Unavailable",
     timezone: clientTimezone || "Unavailable",
   };
   const ip = getClientIp(request);
