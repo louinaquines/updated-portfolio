@@ -142,7 +142,7 @@ export default function Hero() {
       {/* Main Content Body */}
       <main className="relative z-10 flex-1 w-full max-w-7xl mx-auto px-6 sm:px-12 flex flex-col lg:flex-row items-center justify-between">
         {/* Moving name layer keeps the editorial energy behind the portrait. */}
-        <div className="pointer-events-none absolute inset-x-1/2 top-[56%] z-0 w-screen -translate-x-1/2 -translate-y-1/2 overflow-hidden select-none text-center text-[23vw] font-black uppercase leading-[0.78] tracking-[-0.08em] text-black/10 sm:top-[48%] lg:top-[38%] lg:text-[16vw]">
+        <div className="pointer-events-none absolute inset-x-1/2 top-[72%] z-0 w-screen -translate-x-1/2 -translate-y-1/2 overflow-hidden select-none text-center text-[23vw] font-black uppercase leading-[0.78] tracking-[-0.08em] text-black/10 sm:top-[62%] lg:top-[38%] lg:text-[16vw]">
           <div className="animate-marquee">
             <span>LOUI NAQUINES&nbsp;&nbsp;&nbsp;&nbsp;LOUI NAQUINES&nbsp;&nbsp;&nbsp;&nbsp;LOUI NAQUINES&nbsp;&nbsp;&nbsp;&nbsp;</span>
             <span>LOUI NAQUINES&nbsp;&nbsp;&nbsp;&nbsp;LOUI NAQUINES&nbsp;&nbsp;&nbsp;&nbsp;LOUI NAQUINES&nbsp;&nbsp;&nbsp;&nbsp;</span>
@@ -220,7 +220,7 @@ export default function Hero() {
           </div>
 
           {/* Social/contact links stay attached to the portrait on small screens. */}
-          <aside ref={socialRef} className="absolute right-2 top-1/2 z-30 grid w-auto -translate-y-1/2 gap-2 lg:bottom-10 lg:right-0 lg:top-auto lg:mt-0 lg:w-64 lg:translate-y-0" style={{ opacity: 0 }}>
+          <aside ref={socialRef} className="relative z-30 mt-4 flex w-full items-center justify-center gap-3 lg:absolute lg:bottom-10 lg:right-0 lg:mt-0 lg:grid lg:w-64 lg:translate-y-0" style={{ opacity: 0 }}>
             {[
               ["Email", "mailto:louinaquines@gmail.com", "email"],
               ["Facebook", "https://www.facebook.com/loui.naquines", "facebook"],
