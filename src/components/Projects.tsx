@@ -69,7 +69,7 @@ export default function Projects() {
               textAlign="left"
             />
           </div>
-          <p className="max-w-sm text-sm leading-6 text-white/55">Five project spaces ready for the interfaces, images, and stories that will make your work visible.</p>
+          <p className="max-w-sm text-sm leading-6 text-white/55">A curated showcase of digital products, full-stack applications, and interactive platforms engineered to solve real-world problems.</p>
         </div>
         <div ref={galleryRef} style={{ opacity: 0 }}>
           <AccordionGallery items={projects} defaultIndex={0} trigger="hover" height={460} expandRatio={0.52} duration={0.75} gap={10} radius={14} />
