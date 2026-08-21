@@ -10,6 +10,12 @@ type LocationDetails = {
   timezone?: string;
 };
 
+type VisitDetails = LocationDetails & {
+  path?: string;
+  referrer?: string;
+  clientTimezone?: string;
+};
+
 function getVisitorKey(request: NextRequest) {
   const forwardedFor = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim();
   const realIp = request.headers.get("x-real-ip")?.trim();
@@ -47,13 +53,15 @@ function isLocalAddress(ip: string) {
     || /^172\.(1[6-9]|2\d|3[0-1])\./.test(ip);
 }
 
-async function getApproximateLocation(request: NextRequest, clientTimezone?: string): Promise<Required<LocationDetails>> {
+async function getApproximateLocation(request: NextRequest, details: VisitDetails): Promise<Required<LocationDetails>> {
   const fallback = {
-    country: "Unavailable",
-    region: "Unavailable",
-    city: "Unavailable",
-    timezone: clientTimezone || "Unavailable",
+    country: details.country || "Unavailable",
+    region: details.region || "Unavailable",
+    city: details.city || "Unavailable",
+    timezone: details.timezone || details.clientTimezone || "Unavailable",
   };
+  if (details.country && details.region && details.city && details.timezone) return fallback;
+
   const ip = getClientIp(request);
   if (isLocalAddress(ip)) return fallback;
 
@@ -90,14 +98,14 @@ export async function POST(request: NextRequest) {
 
   recentVisits.set(visitorKey, now);
 
-  let details: { path?: string; referrer?: string; clientTimezone?: string } = {};
+  let details: VisitDetails = {};
   try {
     details = await request.json();
   } catch {
     // The notification still works when a client sends no optional details.
   }
 
-  const location = await getApproximateLocation(request, details.clientTimezone);
+  const location = await getApproximateLocation(request, details);
 
   const discordResponse = await fetch(webhookUrl, {
     method: "POST",
