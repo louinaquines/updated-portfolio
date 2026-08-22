@@ -15,6 +15,7 @@ export default function Hero() {
   const statsRef = useRef<HTMLDivElement>(null);
   const photoRef = useRef<HTMLDivElement>(null);
   const socialRef = useRef<HTMLElement>(null);
+  const desktopSocialRef = useRef<HTMLElement>(null);
   const footerRef = useRef<HTMLElement>(null);
 
   const scrollToAbout = (event: React.MouseEvent<HTMLAnchorElement>) => {
@@ -75,6 +76,12 @@ export default function Hero() {
       { opacity: 1, y: 0, duration: 0.9, ease, delay: 1.15 }
     );
 
+    gsap.fromTo(
+      desktopSocialRef.current,
+      { opacity: 0, y: fromY },
+      { opacity: 1, y: 0, duration: 0.9, ease, delay: 1.15 }
+    );
+
     // Footer
     gsap.fromTo(
       footerRef.current,
@@ -119,13 +126,13 @@ export default function Hero() {
         </Link>
 
         <nav className="mx-auto hidden w-full max-w-7xl items-center justify-end gap-9 px-6 text-sm font-medium tracking-wide text-zinc-600 sm:px-12 lg:flex">
-          <Link href="#about" onClick={scrollToAbout} className="hover:text-black transition-colors">
+          <Link href="#about" onClick={scrollToAbout} className="transition-colors hover:text-black">
             About
           </Link>
-          <Link href="#projects" className="hover:text-black transition-colors">
+          <Link href="#projects" className="transition-colors hover:text-black">
             Projects
           </Link>
-          <Link href="#contact" className="hover:text-black transition-colors">
+          <Link href="#contact" className="transition-colors hover:text-black">
             Contact
           </Link>
           <Link
@@ -220,7 +227,7 @@ export default function Hero() {
           </div>
 
           {/* Social/contact links stay attached to the portrait on small screens. */}
-          <aside ref={socialRef} className="relative z-30 mt-4 flex w-full items-center justify-center gap-3 lg:absolute lg:right-[-17rem] lg:top-1/2 lg:mt-0 lg:grid lg:w-64 lg:-translate-y-1/2" style={{ opacity: 0 }}>
+          <aside ref={socialRef} className="relative z-30 mt-4 flex w-full items-center justify-center gap-3 lg:hidden" style={{ opacity: 0 }}>
             {[
               ["Email", "mailto:louinaquines@gmail.com", "email"],
               ["Facebook", "https://www.facebook.com/loui.naquines", "facebook"],
@@ -233,9 +240,46 @@ export default function Hero() {
                 rel={href.startsWith("http") ? "noreferrer" : undefined}
                 aria-label={label}
                 title={label}
-                className="flex size-11 items-center justify-center rounded-full border border-black/15 bg-white/80 p-0 text-zinc-700 backdrop-blur-sm transition-colors hover:border-black hover:bg-white hover:text-black lg:h-auto lg:w-full lg:justify-between lg:rounded-full lg:px-5 lg:py-3 lg:text-xs lg:font-semibold lg:uppercase lg:tracking-[0.1em]"
+                className="flex size-11 items-center justify-center rounded-full border border-black/15 bg-white/80 p-0 text-zinc-700 backdrop-blur-sm transition-colors hover:border-black hover:bg-white hover:text-black lg:h-14 lg:w-24 lg:justify-center lg:rounded-full lg:px-3 lg:py-2 lg:text-xs lg:font-semibold lg:uppercase lg:tracking-[0.1em]"
               >
-                <span className="sr-only lg:not-sr-only">{label}</span>
+                <span className="sr-only">{label}</span>
+                {icon === "email" && (
+                  <svg aria-hidden="true" className="size-4 lg:size-5" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
+                    <rect x="3" y="5" width="18" height="14" rx="2" />
+                    <path d="m4 7 8 6 8-6" />
+                  </svg>
+                )}
+                {icon === "facebook" && (
+                  <svg aria-hidden="true" className="size-4 lg:size-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M14 8h3V4h-3c-3.31 0-5 1.69-5 5v3H6v4h3v4h4v-4h3l1-4h-4V9c0-.67.33-1 1-1Z" />
+                  </svg>
+                )}
+                {icon === "instagram" && (
+                  <svg aria-hidden="true" className="size-4 lg:size-5" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
+                    <rect x="3" y="3" width="18" height="18" rx="5" />
+                    <circle cx="12" cy="12" r="4" />
+                    <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+                  </svg>
+                )}
+              </Link>
+            ))}
+          </aside>
+
+          <aside ref={desktopSocialRef} className="absolute left-full top-[88%] z-30 hidden ml-1 w-16 -translate-y-1/2 grid-cols-1 gap-2 lg:grid" style={{ opacity: 0 }}>
+            {[
+              ["Email", "mailto:louinaquines@gmail.com", "email"],
+              ["Facebook", "https://www.facebook.com/loui.naquines", "facebook"],
+              ["Instagram", "https://www.instagram.com/_whitechocolateee", "instagram"],
+            ].map(([label, href, icon]) => (
+              <Link
+                key={`desktop-${label}`}
+                href={href}
+                target={href.startsWith("http") ? "_blank" : undefined}
+                rel={href.startsWith("http") ? "noreferrer" : undefined}
+                aria-label={label}
+                title={label}
+                className="flex h-12 w-16 items-center justify-center rounded-full border border-black/15 bg-white/90 text-zinc-700 shadow-sm backdrop-blur-sm transition-colors hover:border-black hover:bg-white hover:text-black"
+              >
                 {icon === "email" && (
                   <svg aria-hidden="true" className="size-4" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
                     <rect x="3" y="5" width="18" height="14" rx="2" />
