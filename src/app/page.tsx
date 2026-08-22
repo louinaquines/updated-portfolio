@@ -10,7 +10,7 @@ const personJsonLd = {
   name: "Loui Naquines",
   alternateName: ["Loui Jay Naquines", "louinaquines"],
   url: "https://louinaquines.online",
-  image: "https://louinaquines.online/images/profile.png",
+  image: "https://louinaquines.online/images/seo-preview.jpg",
   jobTitle: "Full-Stack Developer",
   description: "Cebu-based full-stack developer building websites, mobile apps, APIs, and dependable digital products.",
   email: "mailto:louinaquines@gmail.com",

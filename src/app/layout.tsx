@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     default: "Loui Naquines | Full-Stack Developer",
     template: "%s | Loui Naquines",
   },
-  description: "Loui Naquines, also known as Loui Jay Naquines, is a Cebu-based full-stack developer building dependable websites, mobile apps, APIs, and digital products.",
+  description: "Loui Naquines, is a Cebu-based full-stack developer building dependable websites, mobile apps, APIs, and digital products.",
   applicationName: "Loui Naquines Portfolio",
   keywords: [
     "Loui Naquines",
@@ -40,13 +40,13 @@ export const metadata: Metadata = {
     siteName: "Loui Naquines Portfolio",
     title: "Loui Naquines | Full-Stack Developer",
     description: "Portfolio of Loui Naquines, a Cebu-based full-stack developer building websites, mobile apps, APIs, and dependable digital products.",
-    images: [{ url: "/images/hero-person-cutout.png", width: 900, height: 1200, alt: "Loui Naquines, full-stack developer" }],
+    images: [{ url: "/images/seo-preview.jpg", width: 900, height: 1200, alt: "Loui Naquines, full-stack developer" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Loui Naquines | Full-Stack Developer",
     description: "Portfolio of Loui Naquines, a Cebu-based full-stack developer.",
-    images: ["/images/hero-person-cutout.png"],
+    images: ["/images/seo-preview.jpg"],
   },
   robots: {
     index: true,
