@@ -220,7 +220,7 @@ export default function Hero() {
           </div>
 
           {/* Social/contact links stay attached to the portrait on small screens. */}
-          <aside ref={socialRef} className="relative z-30 mt-4 flex w-full items-center justify-center gap-3 lg:absolute lg:bottom-10 lg:right-0 lg:mt-0 lg:grid lg:w-64 lg:translate-y-0" style={{ opacity: 0 }}>
+          <aside ref={socialRef} className="relative z-30 mt-4 flex w-full items-center justify-center gap-3 lg:absolute lg:right-[-17rem] lg:top-1/2 lg:mt-0 lg:grid lg:w-64 lg:-translate-y-1/2" style={{ opacity: 0 }}>
             {[
               ["Email", "mailto:louinaquines@gmail.com", "email"],
               ["Facebook", "https://www.facebook.com/loui.naquines", "facebook"],
