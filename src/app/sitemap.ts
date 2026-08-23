@@ -8,8 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 1,
       images: [
-        "https://louinaquines.online/images/profile.png",
-        "https://louinaquines.online/images/hero-person-cutout.png",
+        "https://louinaquines.online/images/lj2.png",
       ],
     },
   ];

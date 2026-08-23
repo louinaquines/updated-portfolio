@@ -63,6 +63,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 92%;
   filter: grayscale(1) contrast(1.05);
   transform: scale(1.03) translate(calc((var(--pointer-x) - 50%) * 0.015), calc((var(--pointer-y) - 50%) * 0.015));
   transition: transform 180ms ease-out;

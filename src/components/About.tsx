@@ -98,7 +98,7 @@ export default function About() {
         <div className="grid gap-12 border-t border-white/20 pt-12 lg:grid-cols-[minmax(300px,0.75fr)_minmax(0,1.25fr)] lg:gap-24">
           <div ref={profileRef} style={{ opacity: 0 }}>
             <ProfileCard
-              avatarUrl="/images/profile.png"
+              avatarUrl="/images/lj2.png"
               handle="louinaquines"
               status="Cebu, Philippines"
               contactText="Contact"
@@ -139,4 +139,3 @@ export default function About() {
     </section>
   );
 }
-

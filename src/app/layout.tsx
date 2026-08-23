@@ -40,13 +40,13 @@ export const metadata: Metadata = {
     siteName: "Loui Naquines Portfolio",
     title: "Loui Naquines | Full-Stack Developer",
     description: "Portfolio of Loui Naquines, a Cebu-based full-stack developer building websites, mobile apps, APIs, and dependable digital products.",
-    images: [{ url: "/images/seo-preview.jpg", width: 900, height: 1200, alt: "Loui Naquines, full-stack developer" }],
+    images: [{ url: "/images/lj2.png", width: 612, height: 918, alt: "Loui Naquines, full-stack developer" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Loui Naquines | Full-Stack Developer",
     description: "Portfolio of Loui Naquines, a Cebu-based full-stack developer.",
-    images: ["/images/seo-preview.jpg"],
+    images: ["/images/lj2.png"],
   },
   robots: {
     index: true,

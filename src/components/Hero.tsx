@@ -216,12 +216,14 @@ export default function Hero() {
           <div ref={photoRef} className="flex h-[60vh] max-h-[780px] w-full items-end justify-center relative z-10 sm:h-[70vh] lg:h-[82vh] lg:justify-end" style={{ opacity: 0 }}>
             <div className="relative flex h-full w-full items-end justify-center lg:justify-end">
               <Image
-                src="/images/hero-person-cutout.png"
+                  src="/images/lj-removebg-enhanced.png"
                 alt="Loui Naquines - Full-Stack Developer"
-                width={900}
-                height={1200}
+                width={612}
+                height={918}
                 priority
-                className="pointer-events-none h-full w-auto max-w-none select-none object-contain object-bottom drop-shadow-xl grayscale-[0.86] brightness-[1.08] contrast-[0.95]"
+                quality={100}
+                sizes="(max-width: 1023px) 100vw, 50vw"
+                className="pointer-events-none h-full w-auto max-w-none select-none object-contain object-bottom drop-shadow-xl grayscale-[0.86] brightness-[1.08] contrast-[0.95] scale-[1.22] origin-bottom sm:scale-[1.28] lg:-translate-x-2 lg:-translate-y-6 lg:scale-[1.38] lg:origin-bottom"
               />
             </div>
           </div>
@@ -265,7 +267,7 @@ export default function Hero() {
             ))}
           </aside>
 
-          <aside ref={desktopSocialRef} className="absolute left-full top-[88%] z-30 hidden ml-1 w-16 -translate-y-1/2 grid-cols-1 gap-2 lg:grid" style={{ opacity: 0 }}>
+          <aside ref={desktopSocialRef} className="absolute left-full top-[84.4%] z-30 hidden ml-24 w-16 -translate-x-[20px] -translate-y-1/2 grid-cols-1 gap-2 lg:grid" style={{ opacity: 0 }}>
             {[
               ["Email", "mailto:louinaquines@gmail.com", "email"],
               ["Facebook", "https://www.facebook.com/loui.naquines", "facebook"],
