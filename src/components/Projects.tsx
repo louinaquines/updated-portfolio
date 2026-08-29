@@ -13,7 +13,7 @@ const projects: AccordionGalleryItem[] = [
   { label: "Pagkainang-Sambayanan", description: "A full-stack donation management platform that connects donors with local organizations using emergency prioritization logic to route surplus food to communities in need.", image: "/images/project2.png", link: "https://pagkainang-sambayanan.onrender.com/", alt: "Project 02" },
   { label: "Readerly", description: "An AI-powered literacy platform built on a decoupled Laravel and Livewire stack that tracks reading progress and generates custom stories for students.", image: "/images/project3.png", link: "https://readerly-app.onrender.com/", alt: "Project 03" },
   { label: "Cookies N' Dream", description: "A modern, visually engaging landing page designed to showcase artisanal desserts and drive customer orders for a boutique shop.", image: "/images/project4.png", link: "https://cookiesndream.vercel.app/", alt: "Project 04" },
-  { label: "Ai-Resume Builder", description: "An interactive, single-page conversational assistant that guides users through quick questions to automatically generate polished resumes in seconds.", image: "/images/project5.png", link: "https://ai-resume-ph.vercel.app/", alt: "Project 05" },
+  { label: "rally.", description: "A sleek, high-converting pickleball rental page that pairs real-time court availability with an instant, three-click hourly booking experience.", image: "/images/project6.png", link: "https://pickleballrent.vercel.app/", alt: "Project 06" },
 ];
 
 export default function Projects() {
