@@ -12,7 +12,7 @@ const projects: AccordionGalleryItem[] = [
   { label: "Cany", description: "An offline-first mobile utility that scans shelf price tags, tracks running totals, and warns users before they exceed their grocery budget.", image: "/images/project1.png", link: "https://cany-web.vercel.app/", alt: "Project 01" },
   { label: "Pagkainang-Sambayanan", description: "A full-stack donation management platform that connects donors with local organizations using emergency prioritization logic to route surplus food to communities in need.", image: "/images/project2.png", link: "https://pagkainang-sambayanan.onrender.com/", alt: "Project 02" },
   { label: "Readerly", description: "An AI-powered literacy platform built on a decoupled Laravel and Livewire stack that tracks reading progress and generates custom stories for students.", image: "/images/project3.png", link: "https://readerly-app.onrender.com/", alt: "Project 03" },
-  { label: "Cookies N' Dream", description: "A modern, visually engaging landing page designed to showcase artisanal desserts and drive customer orders for a boutique shop.", alt: "Project 04" },
+  { label: "Cookies N' Dream", description: "A modern, visually engaging landing page designed to showcase artisanal desserts and drive customer orders for a boutique shop.", image: "/images/project4.png", link: "https://cookiesndream.vercel.app/", alt: "Project 04" },
   { label: "Ai-Resume Builder", description: "An interactive, single-page conversational assistant that guides users through quick questions to automatically generate polished resumes in seconds.", image: "/images/project5.png", link: "https://ai-resume-ph.vercel.app/", alt: "Project 05" },
 ];
 
