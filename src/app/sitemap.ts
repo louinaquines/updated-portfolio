@@ -7,9 +7,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: "2026-08-21",
       changeFrequency: "monthly",
       priority: 1,
-      images: [
-        "https://louinaquines.online/images/lj2.png",
-      ],
     },
   ];
 }
