@@ -18,7 +18,14 @@ type VisitDetails = LocationDetails & {
 
 function isLikelyAutomatedRequest(request: NextRequest) {
   const userAgent = request.headers.get("user-agent")?.toLowerCase() || "";
-  return /bot|crawler|spider|headless|uptime|monitor|preview/i.test(userAgent);
+  const automationHeaders = [
+    request.headers.get("x-playwright") || "",
+    request.headers.get("x-puppeteer") || "",
+    request.headers.get("x-selenium") || "",
+  ].join(" ").toLowerCase();
+
+  return /bot|crawler|spider|headless|uptime|monitor|preview|scrapy|axios|curl|wget|python-requests|httpclient|postmanruntime|facebookexternalhit|slackbot|discordbot|vercelbot/i.test(userAgent)
+    || /playwright|puppeteer|selenium/i.test(automationHeaders);
 }
 
 function getVisitorKey(request: NextRequest) {

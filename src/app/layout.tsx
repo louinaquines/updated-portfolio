@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      "max-image-preview": "large",
+      "max-image-preview": "none",
       "max-snippet": -1,
       "max-video-preview": -1,
     },

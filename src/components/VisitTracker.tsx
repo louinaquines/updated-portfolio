@@ -9,6 +9,9 @@ export default function VisitTracker() {
     if (sentRef.current) return;
     sentRef.current = true;
 
+    // Do not notify for browser automation tools that execute client-side JavaScript.
+    if (navigator.webdriver || /HeadlessChrome|PhantomJS|Playwright|Puppeteer|Selenium/i.test(navigator.userAgent)) return;
+
     const sessionKey = "portfolio-visit-notified";
     if (sessionStorage.getItem(sessionKey)) return;
     sessionStorage.setItem(sessionKey, "1");
