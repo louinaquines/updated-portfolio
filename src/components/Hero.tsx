@@ -41,7 +41,7 @@ export default function Hero() {
       { opacity: 1, y: 0, duration: 0.9, ease, delay: 0.35 }
     );
 
-    // subtitleRef — line under Hello World
+    // subtitleRef — line under Name
     gsap.fromTo(
       subtitleRef.current,
       { opacity: 0, y: fromY },
@@ -165,7 +165,7 @@ export default function Hero() {
             </p>
             <h1 className="mb-4 text-7xl font-semibold leading-none tracking-tighter text-black sm:text-8xl md:text-8xl">
               <ShinyText
-                text="Hello World!"
+                text="Loui Naquines"
                 speed={1}
                 delay={2}
                 color="#111111"
@@ -176,7 +176,7 @@ export default function Hero() {
             </h1>
             <p ref={subtitleRef} className="text-sm sm:text-base font-normal text-zinc-700 flex items-center gap-2" style={{ opacity: 0 }}>
               <span className="w-6 h-[1.5px] bg-zinc-700 inline-block"></span>
-              It&apos;s Loui Naquines, building for the web and beyond
+                building for the web and beyond
             </p>
           </div>
 
