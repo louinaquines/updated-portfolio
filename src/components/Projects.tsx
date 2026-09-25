@@ -1,24 +1,31 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import AccordionGallery, { type AccordionGalleryItem } from "@/components/AccordionGallery";
+import { useEffect, useRef, useState } from "react";
+import DriftWall, { type DriftWallItem } from "@/components/DriftWall";
+import DepthCarousel from "@/components/DepthCarousel";
 import SplitText from "@/components/SplitText";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const projects: AccordionGalleryItem[] = [
-  { label: "Cany", description: "An offline-first mobile utility that scans shelf price tags, tracks running totals, and warns users before they exceed their grocery budget.", image: "/images/project1.png", link: "https://cany-web.vercel.app/", alt: "Project 01" },
-  { label: "Pagkainang-Sambayanan", description: "A full-stack donation management platform that connects donors with local organizations using emergency prioritization logic to route surplus food to communities in need.", image: "/images/project2.png", link: "https://pagkainang-sambayanan.onrender.com/", alt: "Project 02" },
-  { label: "Readerly", description: "An AI-powered literacy platform built on a decoupled Laravel and Livewire stack that tracks reading progress and generates custom stories for students.", image: "/images/project3.png", link: "https://readerly-app.onrender.com/", alt: "Project 03" },
-  { label: "Cookies N' Dream", description: "A modern, visually engaging landing page designed to showcase artisanal desserts and drive customer orders for a boutique shop.", image: "/images/project4.png", link: "https://cookiesndream.vercel.app/", alt: "Project 04" },
-  { label: "rally.", description: "A sleek, high-converting pickleball rental page that pairs real-time court availability with an instant, three-click hourly booking experience.", image: "/images/project6.png", link: "https://pickleballrent.vercel.app/", alt: "Project 06" },
+const projects: DriftWallItem[] = [
+  { title: "Cany", image: "/images/project1.png", href: "https://cany-web.vercel.app/" },
+  { title: "Pagkainang-Sambayanan", image: "/images/project2.png", href: "https://pagkainang-sambayanan.onrender.com/" },
+  { title: "Readerly", image: "/images/project3.png", href: "https://readerly-app.onrender.com/" },
+  { title: "Cookies N' Dream", image: "/images/project4.png", href: "https://cookiesndream.vercel.app/" },
+  { title: "AI Resume Builder", image: "/images/project5.png", href: "https://ai-resume-ph.vercel.app/" },
+  { title: "rally.", image: "/images/project6.png", href: "https://pickleballrent.vercel.app/" },
+  { title: "Shanel Crafts", image: "/images/project7.png", href: "https://shanelcrafts.vercel.app/" },
+  { title: "Amadah Pastries", image: "/images/project8.png", href: "https://amadahpastries.vercel.app/" },
+  { title: "Nihongojin", image: "/images/project9.png", href: "https://nihongojin.vercel.app/" },
+  { title: "Orchard", image: "/images/project10.png", href: "https://orchardweb.vercel.app/" },
 ];
 
 export default function Projects() {
   const headerRef = useRef<HTMLDivElement>(null);
   const galleryRef = useRef<HTMLDivElement>(null);
+  const [viewMode, setViewMode] = useState<"wall" | "carousel">("carousel");
 
   useEffect(() => {
     if (headerRef.current) {
@@ -69,14 +76,25 @@ export default function Projects() {
               textAlign="left"
             />
           </div>
-          <p className="max-w-sm text-sm leading-6 text-white/55">A curated showcase of digital products, full-stack applications, and interactive platforms engineered to solve real-world problems.</p>
+          <p className="max-w-sm text-sm leading-6 text-white/55">A curated showcase of digital products, full-stack applications, and interactive platforms.</p>
         </div>
         <div ref={galleryRef} style={{ opacity: 0 }}>
-          <AccordionGallery items={projects} defaultIndex={0} trigger="hover" height={460} expandRatio={0.52} duration={0.75} gap={10} radius={14} />
+          <div className="mb-5 flex items-center justify-between gap-4">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-white/45">Explore projects</p>
+            <div className="flex items-center gap-1 rounded-full border border-white/20 p-1" role="group" aria-label="Project view options">
+              <button type="button" className={`rounded-full px-3 py-2 text-[0.65rem] font-semibold uppercase tracking-[0.12em] transition-colors ${viewMode === "wall" ? "bg-white text-black" : "text-white/60 hover:text-white"}`} onClick={() => setViewMode("wall")} aria-pressed={viewMode === "wall"}>Wall</button>
+              <button type="button" className={`rounded-full px-3 py-2 text-[0.65rem] font-semibold uppercase tracking-[0.12em] transition-colors ${viewMode === "carousel" ? "bg-white text-black" : "text-white/60 hover:text-white"}`} onClick={() => setViewMode("carousel")} aria-pressed={viewMode === "carousel"}>Carousel</button>
+            </div>
+          </div>
+          <div className="h-[560px] sm:h-[620px] lg:h-[680px]">
+            {viewMode === "wall" ? (
+              <DriftWall items={projects} columns={5} tileWidth={200} tileHeight={132} gap={18} tilt={16} turn={-14} perspective={1200} depth={120} speed={34} direction="up" variance={0.45} parallax={0.6} lift={64} fade={0.6} dim={0.55} grayscale overlayColor="#060010" />
+            ) : (
+              <DepthCarousel items={projects} cardWidth={620} cardHeight={410} depth={190} spread={128} tilt={18} visibleCards={4} falloff={0.2} blur={0} showControls showIndicators />
+            )}
+          </div>
         </div>
       </div>
     </section>
   );
 }
-
-
