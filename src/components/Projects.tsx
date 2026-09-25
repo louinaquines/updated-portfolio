@@ -25,7 +25,7 @@ const projects: DriftWallItem[] = [
 export default function Projects() {
   const headerRef = useRef<HTMLDivElement>(null);
   const galleryRef = useRef<HTMLDivElement>(null);
-  const [viewMode, setViewMode] = useState<"wall" | "carousel">("carousel");
+  const [viewMode, setViewMode] = useState<"wall" | "carousel">("wall");
 
   useEffect(() => {
     if (headerRef.current) {

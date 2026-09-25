@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useCallback, useLayoutEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { gsap } from "gsap";
-import ShinyText from "@/components/ShinyText";
 import "./StaggeredMenu.css";
 
 /** @typedef {{ label: string, link: string, ariaLabel?: string }} MenuItem */
@@ -21,13 +21,14 @@ export default function StaggeredMenu({
   className,
   logoUrl,
   menuButtonColor = "#111111",
-  openMenuButtonColor = "#111111",
+  openMenuButtonColor = "#f4f1eb",
   accentColor = "#111111",
   changeMenuColorOnOpen = true,
   isFixed = false,
   closeOnClickAway = true,
 }) {
   const [open, setOpen] = useState(false);
+  const [menuVisible, setMenuVisible] = useState(false);
   const openRef = useRef(false);
   const panelRef = useRef(null);
   const preLayersRef = useRef(null);
@@ -107,6 +108,7 @@ export default function StaggeredMenu({
       duration: 0.32,
       ease: "power3.in",
       overwrite: "auto",
+      onComplete: () => setMenuVisible(false),
     });
   }, [position]);
 
@@ -126,6 +128,7 @@ export default function StaggeredMenu({
     openRef.current = nextOpen;
     setOpen(nextOpen);
     if (nextOpen) {
+      setMenuVisible(true);
       const timeline = buildOpenTimeline();
       timeline?.play(0);
     } else {
@@ -170,13 +173,13 @@ export default function StaggeredMenu({
   }, []);
 
   return (
-    <div className={`${className ? `${className} ` : ""}staggered-menu-wrapper${isFixed ? " fixed-wrapper" : ""}`} style={{ "--sm-accent": accentColor }} data-position={position} data-open={open || undefined}>
+    <div className={`${className ? `${className} ` : ""}staggered-menu-wrapper${isFixed ? " fixed-wrapper" : ""}`} style={{ "--sm-accent": accentColor }} data-position={position} data-open={menuVisible || undefined}>
       <div ref={preLayersRef} className="sm-prelayers" aria-hidden="true">
         {colors.slice(0, 3).map((color, index) => <div key={index} className="sm-prelayer" style={{ background: color }} />)}
       </div>
       <header className="staggered-menu-header" aria-label="Mobile navigation header">
         <div className="sm-logo" aria-label="Logo">
-          <ShinyText maskImage={logoUrl} speed={2} delay={1} color="#111111" shineColor="#ffffff" spread={120} className="sm-logo-img" />
+          <Image src={logoUrl} alt="LJ logo" width={70} height={38} className="sm-logo-img" />
         </div>
         <button ref={toggleBtnRef} className="sm-toggle" aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} aria-controls="staggered-menu-panel" onClick={toggleMenu} type="button">
           <span className="sm-toggle-textWrap" aria-hidden="true"><span ref={textInnerRef} className="sm-toggle-textInner">{textLines.map((line, index) => <span className="sm-toggle-line" key={`${line}-${index}`}>{line}</span>)}</span></span>

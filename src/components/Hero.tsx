@@ -114,13 +114,11 @@ export default function Hero() {
       <header ref={navRef} className="relative z-50 hidden w-full bg-[#f6f6f7]/90 py-7 backdrop-blur-md lg:sticky lg:top-0 lg:block" style={{ opacity: 0 }}>
         {/* The logo stays anchored to the viewport while links share the Hello content grid. */}
         <Link href="/" className="absolute left-8 top-[calc(50%+4px)] hidden -translate-y-1/2 items-center gap-2 group sm:left-16 sm:top-1/2 lg:flex">
-          <ShinyText
-            maskImage="/images/lj-logo-transparent.png"
-            speed={2}
-            delay={1}
-            color="#111111"
-            shineColor="#ffffff"
-            spread={120}
+          <Image
+            src="/images/lj-logo-transparent.png"
+            alt="LJ logo"
+            width={64}
+            height={48}
             className="h-12 w-16 object-contain transition-transform duration-200 group-hover:scale-105"
           />
         </Link>
