@@ -209,19 +209,19 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Right Column Large Portrait Cutout */}
+        {/* Right Column Portrait */}
         <div className="relative w-full lg:w-1/2">
           <div ref={photoRef} className="flex h-[60vh] max-h-[780px] w-full items-end justify-center relative z-10 sm:h-[70vh] lg:h-[82vh] lg:justify-end" style={{ opacity: 0 }}>
             <div className="relative flex h-full w-full items-end justify-center lg:justify-end">
               <Image
-                  src="/images/lj-removebg-enhanced.png"
+                src="/images/newphoto2-hero.png"
                 alt="Loui Naquines - Full-Stack Developer"
-                width={612}
-                height={918}
+                width={1024}
+                height={1091}
                 priority
                 quality={100}
                 sizes="(max-width: 1023px) 100vw, 50vw"
-                className="pointer-events-none h-full w-auto max-w-none select-none object-contain object-bottom drop-shadow-xl grayscale-[0.86] brightness-[1.08] contrast-[0.95] scale-[1.22] origin-bottom sm:scale-[1.28] lg:-translate-x-2 lg:-translate-y-6 lg:scale-[1.38] lg:origin-bottom"
+                className="h-auto w-auto max-h-full max-w-full select-none object-contain object-bottom drop-shadow-xl grayscale-[0.86] brightness-[1.08] contrast-[0.95] transition-[filter,transform] duration-500 ease-out hover:grayscale-0 hover:brightness-100 hover:contrast-100 motion-reduce:transition-none xl:-translate-x-[15px] xl:translate-y-10 xl:scale-[1.12] xl:origin-bottom min-[1440px]:h-[571px] min-[1440px]:max-h-none min-[1440px]:max-w-none min-[1440px]:!translate-x-[63px] min-[1440px]:!translate-y-[calc(160px_-_24vh)] min-[1440px]:!scale-100"
               />
             </div>
           </div>
@@ -265,7 +265,7 @@ export default function Hero() {
             ))}
           </aside>
 
-          <aside ref={desktopSocialRef} className="absolute left-full top-[84.4%] z-30 hidden ml-24 w-16 -translate-x-[20px] -translate-y-1/2 grid-cols-1 gap-2 lg:grid" style={{ opacity: 0 }}>
+          <aside ref={desktopSocialRef} className="absolute left-full top-[84.4%] z-30 hidden ml-24 w-20 -translate-x-[20px] -translate-y-1/2 grid-cols-1 gap-2 lg:grid min-[1440px]:w-16" style={{ opacity: 0 }}>
             {[
               ["Email", "mailto:louinaquines@gmail.com", "email"],
               ["Facebook", "https://www.facebook.com/loui.naquines", "facebook"],
@@ -278,21 +278,21 @@ export default function Hero() {
                 rel={href.startsWith("http") ? "noreferrer" : undefined}
                 aria-label={label}
                 title={label}
-                className="flex h-12 w-16 items-center justify-center rounded-full border border-black/15 bg-white/90 text-zinc-700 shadow-sm backdrop-blur-sm transition-colors hover:border-black hover:bg-white hover:text-black"
+                className="flex h-[60px] w-20 items-center justify-center rounded-full border border-black/15 bg-white/90 text-zinc-700 shadow-sm backdrop-blur-sm transition-colors hover:border-black hover:bg-white hover:text-black min-[1440px]:h-12 min-[1440px]:w-16"
               >
                 {icon === "email" && (
-                  <svg aria-hidden="true" className="size-4" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
+                  <svg aria-hidden="true" className="size-5 min-[1440px]:size-4" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
                     <rect x="3" y="5" width="18" height="14" rx="2" />
                     <path d="m4 7 8 6 8-6" />
                   </svg>
                 )}
                 {icon === "facebook" && (
-                  <svg aria-hidden="true" className="size-4" fill="currentColor" viewBox="0 0 24 24">
+                  <svg aria-hidden="true" className="size-5 min-[1440px]:size-4" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M14 8h3V4h-3c-3.31 0-5 1.69-5 5v3H6v4h3v4h4v-4h3l1-4h-4V9c0-.67.33-1 1-1Z" />
                   </svg>
                 )}
                 {icon === "instagram" && (
-                  <svg aria-hidden="true" className="size-4" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
+                  <svg aria-hidden="true" className="size-5 min-[1440px]:size-4" fill="none" stroke="currentColor" strokeWidth="1.8" viewBox="0 0 24 24">
                     <rect x="3" y="3" width="18" height="18" rx="5" />
                     <circle cx="12" cy="12" r="4" />
                     <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
