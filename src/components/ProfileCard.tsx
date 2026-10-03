@@ -71,7 +71,7 @@ export default function ProfileCard({
     <div className="profile-card-wrap">
       <div ref={cardRef} className="profile-card" onPointerDown={handlePointerDown} onPointerUp={clearTouchTimer} onPointerCancel={resetPointer} onPointerMove={handlePointerMove} onPointerLeave={resetPointer}>
         <div className="profile-card__shine" />
-        <Image className="profile-card__avatar" src={avatarUrl} alt={`${name || "Profile"} image`} fill sizes="(max-width: 1024px) 100vw, 40vw" />
+        <Image className="profile-card__avatar" src={avatarUrl} alt={`${name || "Profile"} image`} fill sizes="(max-width: 1024px) 100vw, 40vw" quality={100} />
         {(name || title) && (
           <div className="profile-card__details">
             {name && <p className="profile-card__name">{name}</p>}

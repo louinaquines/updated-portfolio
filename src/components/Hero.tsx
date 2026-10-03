@@ -174,7 +174,7 @@ export default function Hero() {
             </h1>
             <p ref={subtitleRef} className="text-sm sm:text-base font-normal text-zinc-700 flex items-center gap-2" style={{ opacity: 0 }}>
               <span className="w-6 h-[1.5px] bg-zinc-700 inline-block"></span>
-                Building for the web and beyond 
+              Building for the web and beyond
             </p>
           </div>
 
@@ -214,14 +214,14 @@ export default function Hero() {
           <div ref={photoRef} className="flex h-[60vh] max-h-[780px] w-full items-end justify-center relative z-10 sm:h-[70vh] lg:h-[82vh] lg:justify-end" style={{ opacity: 0 }}>
             <div className="relative flex h-full w-full items-end justify-center lg:justify-end">
               <Image
-                src="/images/newphoto2-hero.png"
+                src="/images/hero-person-cutout-v5.png"
                 alt="Loui Naquines - Full-Stack Developer"
-                width={1024}
-                height={1091}
+                width={1536}
+                height={1650}
                 priority
                 quality={100}
                 sizes="(max-width: 1023px) 100vw, 50vw"
-                className="h-auto w-auto max-h-full max-w-full select-none object-contain object-bottom drop-shadow-xl grayscale-[0.86] brightness-[1.08] contrast-[0.95] transition-[filter,transform] duration-500 ease-out hover:grayscale-0 hover:brightness-100 hover:contrast-100 motion-reduce:transition-none xl:-translate-x-[15px] xl:translate-y-10 xl:scale-[1.12] xl:origin-bottom min-[1440px]:h-[571px] min-[1440px]:max-h-none min-[1440px]:max-w-none min-[1440px]:!translate-x-[63px] min-[1440px]:!translate-y-[calc(160px_-_24vh)] min-[1440px]:!scale-100"
+                className="h-auto w-auto max-h-full max-w-full select-none object-contain object-bottom drop-shadow-xl grayscale-[0.86] brightness-[1.08] contrast-[0.95] transition-[filter,transform] duration-500 ease-out hover:grayscale-0 hover:brightness-100 hover:contrast-100 motion-reduce:transition-none xl:-translate-x-[15px] xl:translate-y-10 xl:scale-[1.12] xl:origin-bottom min-[1440px]:h-[591px] min-[1440px]:max-h-none min-[1440px]:max-w-none min-[1440px]:!translate-x-[63px] min-[1440px]:!translate-y-[calc(147px_-_24vh)] min-[1440px]:!scale-x-100 min-[1440px]:!scale-y-100 min-[1440px]:!origin-bottom"
               />
             </div>
           </div>
@@ -265,7 +265,7 @@ export default function Hero() {
             ))}
           </aside>
 
-          <aside ref={desktopSocialRef} className="absolute left-full top-[84.4%] z-30 hidden ml-24 w-20 -translate-x-[20px] -translate-y-1/2 grid-cols-1 gap-2 lg:grid min-[1440px]:w-16" style={{ opacity: 0 }}>
+          <aside ref={desktopSocialRef} className="absolute left-full top-[82%] z-30 hidden ml-24 w-20 -translate-x-[25px] -translate-y-1/2 grid-cols-1 gap-2 lg:grid min-[1440px]:w-16" style={{ opacity: 0 }}>
             {[
               ["Email", "mailto:louinaquines@gmail.com", "email"],
               ["Facebook", "https://www.facebook.com/loui.naquines", "facebook"],
