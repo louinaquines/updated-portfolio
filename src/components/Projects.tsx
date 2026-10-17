@@ -14,7 +14,7 @@ const projects: DriftWallItem[] = [
   { title: "Pagkainang-Sambayanan", image: "/images/project2.png", href: "https://pagkainang-sambayanan.onrender.com/" },
   { title: "Readerly", image: "/images/project3.png", href: "https://readerly-app.onrender.com/" },
   { title: "Cookies N' Dream", image: "/images/project4.png", href: "https://cookiesndream.vercel.app/" },
-  { title: "AI Resume Builder", image: "/images/project5.png", href: "https://ai-resume-ph.vercel.app/" },
+  { title: "AI Resume Builder", image: "/images/project5.png", href: "https://solearchive-web.vercel.app/" },
   { title: "rally.", image: "/images/project6.png", href: "https://pickleballrent.vercel.app/" },
   { title: "Shanel Crafts", image: "/images/project7.png", href: "https://shanelcrafts.vercel.app/" },
   { title: "Amadah Pastries", image: "/images/project8.png", href: "https://amadahpastries.vercel.app/" },
