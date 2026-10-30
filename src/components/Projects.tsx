@@ -12,7 +12,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const projects: DriftWallItem[] = [
   { title: "Cany", image: "/images/project1.png", href: "https://cany-web.vercel.app/" },
-  { title: "Sync — Work + Study Hub", image: "/images/sync-studyhub.png", href: "https://sync-studyhub.vercel.app/" },
+  { title: "Sync — Work + Study Hub", image: "/images/sync-studyhub.png", href: "https://sync-studyhub.vercel.app/#hero" },
   { title: "Sole Archive", image: "/images/project5.png", href: "https://solearchive-web.vercel.app/" },
   { title: "Cookies N' Dream", image: "/images/project4.png", href: "https://cookiesndream.vercel.app/" },
   { title: "Pagkainang-Sambayanan", image: "/images/project2.png", href: "https://pagkainang-sambayanan.onrender.com/" },
