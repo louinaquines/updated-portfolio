@@ -8,6 +8,7 @@ export type DriftWallItem = {
   image?: string;
   title?: string;
   href?: string;
+  embeddable?: boolean;
 };
 
 type DriftWallProps = {

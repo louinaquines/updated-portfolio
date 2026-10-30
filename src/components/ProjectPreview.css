@@ -6,5 +6,10 @@
 .project-preview__actions a, .project-preview__actions button { border: 1px solid #ffffff70; padding: 10px 12px; color: white; font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; }
 .project-preview__actions a:hover, .project-preview__actions button:hover, .project-preview__actions a:focus-visible, .project-preview__actions button:focus-visible { background: white; color: #0b0b0b; }
 .project-preview__frame { width: 100%; min-height: 0; flex: 1; border: 0; background: #f6f6f7; }
+.project-preview__fallback { display: flex; min-height: 0; flex: 1; flex-direction: column; align-items: center; justify-content: center; gap: 18px; overflow: auto; padding: 24px; background: #eeeeee; color: #333; text-align: center; }
+.project-preview__image { position: relative; width: min(100%, 1100px); aspect-ratio: 1.94; overflow: hidden; border: 1px solid #ccc; box-shadow: 0 16px 44px #0002; }
+.project-preview__image img { object-fit: contain; }
+.project-preview__fallback a { border: 1px solid #111; padding: 12px 18px; background: #111; color: white; font-size: .75rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.project-preview__fallback a:hover, .project-preview__fallback a:focus-visible { background: #fff; color: #111; }
 .project-preview__unavailable { display: grid; flex: 1; place-items: center; color: #333; }
 @media (max-width: 640px) { .project-preview { padding: 8px; } .project-preview__window { height: calc(100dvh - 16px); } .project-preview__header { min-height: 60px; padding: 10px; } .project-preview__actions a, .project-preview__actions button { padding: 8px; font-size: .6rem; } }
