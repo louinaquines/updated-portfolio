@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import DriftWall, { type DriftWallItem } from "@/components/DriftWall";
 import DepthCarousel from "@/components/DepthCarousel";
+import ProjectPreview from "@/components/ProjectPreview";
 import SplitText from "@/components/SplitText";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -11,10 +12,11 @@ gsap.registerPlugin(ScrollTrigger);
 
 const projects: DriftWallItem[] = [
   { title: "Cany", image: "/images/project1.png", href: "https://cany-web.vercel.app/" },
+  { title: "Sync — Work + Study Hub", image: "/images/sync-studyhub.png", href: "https://sync-studyhub.vercel.app/" },
+  { title: "Sole Archive", image: "/images/project5.png", href: "https://solearchive-web.vercel.app/" },
+  { title: "Cookies N' Dream", image: "/images/project4.png", href: "https://cookiesndream.vercel.app/" },
   { title: "Pagkainang-Sambayanan", image: "/images/project2.png", href: "https://pagkainang-sambayanan.onrender.com/" },
   { title: "Readerly", image: "/images/project3.png", href: "https://readerly-app.onrender.com/" },
-  { title: "Cookies N' Dream", image: "/images/project4.png", href: "https://cookiesndream.vercel.app/" },
-  { title: "AI Resume Builder", image: "/images/project5.png", href: "https://solearchive-web.vercel.app/" },
   { title: "rally.", image: "/images/project6.png", href: "https://pickleballrent.vercel.app/" },
   { title: "Shanel Crafts", image: "/images/project7.png", href: "https://shanelcrafts.vercel.app/" },
   { title: "Amadah Pastries", image: "/images/project8.png", href: "https://amadahpastries.vercel.app/" },
@@ -25,7 +27,8 @@ const projects: DriftWallItem[] = [
 export default function Projects() {
   const headerRef = useRef<HTMLDivElement>(null);
   const galleryRef = useRef<HTMLDivElement>(null);
-  const [viewMode, setViewMode] = useState<"wall" | "carousel">("wall");
+  const [viewMode, setViewMode] = useState<"wall" | "horizontal">("wall");
+  const [preview, setPreview] = useState<DriftWallItem | null>(null);
 
   useEffect(() => {
     if (headerRef.current) {
@@ -81,20 +84,21 @@ export default function Projects() {
         <div ref={galleryRef} style={{ opacity: 0 }}>
           <div className="mb-5 flex items-center justify-between gap-4">
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-white/45">Explore projects</p>
-            <div className="flex items-center gap-1 rounded-full border border-white/20 p-1" role="group" aria-label="Project view options">
-              <button type="button" className={`rounded-full px-3 py-2 text-[0.65rem] font-semibold uppercase tracking-[0.12em] transition-colors ${viewMode === "wall" ? "bg-white text-black" : "text-white/60 hover:text-white"}`} onClick={() => setViewMode("wall")} aria-pressed={viewMode === "wall"}>Wall</button>
-              <button type="button" className={`rounded-full px-3 py-2 text-[0.65rem] font-semibold uppercase tracking-[0.12em] transition-colors ${viewMode === "carousel" ? "bg-white text-black" : "text-white/60 hover:text-white"}`} onClick={() => setViewMode("carousel")} aria-pressed={viewMode === "carousel"}>Carousel</button>
+            <div className="flex border border-white/25" role="group" aria-label="Project view options">
+              <button type="button" className={`px-4 py-3 text-[0.65rem] font-semibold uppercase tracking-[0.12em] transition-colors ${viewMode === "wall" ? "bg-white text-black" : "text-white/70 hover:text-white"}`} onClick={() => setViewMode("wall")} aria-pressed={viewMode === "wall"}>Drift</button>
+              <button type="button" className={`border-l border-white/25 px-4 py-3 text-[0.65rem] font-semibold uppercase tracking-[0.12em] transition-colors ${viewMode === "horizontal" ? "bg-white text-black" : "text-white/70 hover:text-white"}`} onClick={() => setViewMode("horizontal")} aria-pressed={viewMode === "horizontal"}>Horizontal</button>
             </div>
           </div>
-          <div className="h-[560px] sm:h-[620px] lg:h-[680px]">
+          <div className="h-[500px] sm:h-[600px] lg:h-[700px]">
             {viewMode === "wall" ? (
-              <DriftWall items={projects} columns={5} tileWidth={200} tileHeight={132} gap={18} tilt={16} turn={-14} perspective={1200} depth={120} speed={34} direction="up" variance={0.45} parallax={0.6} lift={64} fade={0.6} dim={0.55} grayscale overlayColor="#060010" />
+              <DriftWall items={projects} onSelect={setPreview} columns={5} tileWidth={240} tileHeight={156} gap={18} radius={2} tilt={12} turn={-10} perspective={1200} depth={100} speed={14} direction="up" variance={0.35} parallax={0.45} lift={48} fade={0.48} dim={0.96} grayscale overlayColor="#0b0b0b" />
             ) : (
-              <DepthCarousel items={projects} cardWidth={620} cardHeight={410} depth={190} spread={128} tilt={18} visibleCards={4} falloff={0.2} blur={0} showControls showIndicators />
+              <DepthCarousel items={projects} onSelect={setPreview} />
             )}
           </div>
         </div>
       </div>
+      {preview && <ProjectPreview project={preview} onClose={() => setPreview(null)} />}
     </section>
   );
 }

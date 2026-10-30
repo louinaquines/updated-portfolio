@@ -1,0 +1,10 @@
+.project-preview { position: fixed; inset: 0; z-index: 200; display: grid; place-items: center; padding: 24px; background: rgb(0 0 0 / .82); }
+.project-preview__window { display: flex; width: min(100%, 1600px); height: min(92dvh, 1000px); flex-direction: column; overflow: hidden; border: 1px solid #ffffff50; background: #fff; box-shadow: 0 28px 90px #000a; }
+.project-preview__header { display: flex; min-height: 64px; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 20px; background: #0b0b0b; color: white; }
+.project-preview__title { overflow: hidden; font-family: Georgia, serif; font-size: clamp(1rem, 2vw, 1.35rem); font-weight: 700; text-overflow: ellipsis; white-space: nowrap; }
+.project-preview__actions { display: flex; flex: none; gap: 8px; }
+.project-preview__actions a, .project-preview__actions button { border: 1px solid #ffffff70; padding: 10px 12px; color: white; font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; }
+.project-preview__actions a:hover, .project-preview__actions button:hover, .project-preview__actions a:focus-visible, .project-preview__actions button:focus-visible { background: white; color: #0b0b0b; }
+.project-preview__frame { width: 100%; min-height: 0; flex: 1; border: 0; background: #f6f6f7; }
+.project-preview__unavailable { display: grid; flex: 1; place-items: center; color: #333; }
+@media (max-width: 640px) { .project-preview { padding: 8px; } .project-preview__window { height: calc(100dvh - 16px); } .project-preview__header { min-height: 60px; padding: 10px; } .project-preview__actions a, .project-preview__actions button { padding: 8px; font-size: .6rem; } }

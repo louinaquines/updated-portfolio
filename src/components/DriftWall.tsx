@@ -12,6 +12,7 @@ export type DriftWallItem = {
 
 type DriftWallProps = {
   items: DriftWallItem[];
+  onSelect?: (item: DriftWallItem) => void;
   columns?: number;
   tileWidth?: number;
   tileHeight?: number;
@@ -46,6 +47,7 @@ const prefersReducedMotion = () =>
 
 export default function DriftWall({
   items,
+  onSelect,
   columns = 5,
   tileWidth = 200,
   tileHeight = 132,
@@ -82,6 +84,7 @@ export default function DriftWall({
   const lastTsRef = useRef<number | null>(null);
   const activeIdRef = useRef<string | null>(null);
   const [containerHeight, setContainerHeight] = useState(600);
+  const [tileUnit, setTileUnit] = useState(tileHeight + gap);
   const [activeId, setActiveId] = useState<string | null>(null);
   const [reduced, setReduced] = useState(prefersReducedMotion);
 
@@ -93,13 +96,13 @@ export default function DriftWall({
   }, [items, safeColumns]);
 
   const columnMeta = useMemo(() => {
-    const unit = tileHeight + gap;
+    const unit = tileUnit;
     return columnItems.map((column) => {
       const copyHeight = Math.max(unit, column.length * unit);
       const copies = Math.max(2, Math.ceil((containerHeight * 1.6) / copyHeight) + 1);
       return { copyHeight, copies };
     });
-  }, [columnItems, tileHeight, gap, containerHeight]);
+  }, [columnItems, tileUnit, containerHeight]);
 
   const baseVelocities = useMemo(() => {
     const directionSign = direction === "up" ? 1 : -1;
@@ -109,7 +112,7 @@ export default function DriftWall({
   const applyPlaneTransform = useCallback((px: number, py: number) => {
     if (!planeRef.current) return;
     planeRef.current.style.transform =
-      `translate(-50%, -50%) scale(1.18) rotateX(${tilt + py}deg) rotateY(${turn + px}deg) rotateZ(${roll}deg) translateZ(${-depth}px)`;
+      `translate(-50%, -50%) scale(var(--dw-scale, 1.18)) rotateX(${tilt + py}deg) rotateY(${turn + px}deg) rotateZ(${roll}deg) translateZ(${-depth}px)`;
   }, [tilt, turn, roll, depth]);
 
   useEffect(() => {
@@ -121,7 +124,11 @@ export default function DriftWall({
 
   useLayoutEffect(() => {
     if (!containerRef.current) return;
-    const observer = new ResizeObserver(([entry]) => setContainerHeight(entry.contentRect.height || 600));
+    const observer = new ResizeObserver(([entry]) => {
+      setContainerHeight(entry.contentRect.height || 600);
+      const tile = containerRef.current?.querySelector<HTMLElement>(".drift-wall__tile");
+      if (tile) setTileUnit(tile.offsetHeight);
+    });
     observer.observe(containerRef.current);
     return () => observer.disconnect();
   }, []);
@@ -206,8 +213,10 @@ export default function DriftWall({
   const renderTile = (item: DriftWallItem, id: string, column: number) => {
     const content = (
       <span className="drift-wall__inner">
-        {item.image ? <Image src={item.image} alt={item.title || ""} fill sizes="(max-width: 640px) 104px, (max-width: 1023px) 132px, 200px" quality={100} draggable={false} /> : <span className="drift-wall__placeholder">Coming soon</span>}
-        <span className="drift-wall__overlay" aria-hidden="true" />
+        <span className="drift-wall__image">
+          {item.image ? <Image src={item.image} alt={item.title || ""} fill sizes="(max-width: 640px) 150px, (max-width: 1023px) 180px, 240px" quality={100} draggable={false} /> : <span className="drift-wall__placeholder">Coming soon</span>}
+          <span className="drift-wall__overlay" aria-hidden="true" />
+        </span>
         <span className="drift-wall__label">{item.title}</span>
       </span>
     );
@@ -219,11 +228,7 @@ export default function DriftWall({
       onBlur: release,
     };
 
-    return item.href ? (
-      <a key={id} href={item.href} target="_blank" rel="noreferrer noopener" {...commonProps}>{content}</a>
-    ) : (
-      <div key={id} tabIndex={0} role="button" aria-label={item.title || "Project coming soon"} {...commonProps}>{content}</div>
-    );
+    return <button key={id} type="button" aria-label={`Preview ${item.title || "project"}`} onClick={() => onSelect?.(item)} {...commonProps}>{content}</button>;
   };
 
   return (
